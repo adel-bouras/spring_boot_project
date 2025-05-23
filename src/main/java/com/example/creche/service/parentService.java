@@ -64,7 +64,7 @@ public class parentService {
     }
 
 @PostMapping("/status")
-public List<EnfantStatusDto> status(@RequestBody parentDto parent) {
-        return responserepository.findByParent(parent.getId());
+public List<EnfantStatusDto> status( long parent) {
+        return responserepository.findByParent(parent);
 }
 }

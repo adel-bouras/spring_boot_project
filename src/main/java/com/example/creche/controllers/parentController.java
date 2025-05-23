@@ -1,6 +1,7 @@
 package com.example.creche.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.creche.dtos.EnfantStatusDto;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @CrossOrigin(origins = "*")  
@@ -48,9 +50,9 @@ public class parentController {
         return enf;
     }
 
-    @GetMapping("/status")
-    public List<EnfantStatusDto> getMethodName(@RequestBody parentDto param) {
-        return this.parentservice.status(param);
+    @GetMapping("/status/{id}")
+    public List<EnfantStatusDto> getMethodName(@PathVariable("id") long id ) {
+        return this.parentservice.status(id);
     }
     
     
