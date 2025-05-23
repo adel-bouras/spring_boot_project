@@ -1,7 +1,9 @@
 package com.example.creche.service;
 
 import com.example.creche.dtos.loginDTO;
+import com.example.creche.exceptions.userNotFound;
 import com.example.creche.models.enfant;
+import com.example.creche.models.reponse;
 import com.example.creche.repository.adminRepository;
 import com.example.creche.repository.enfantRepository;
 import com.example.creche.repository.responseRepository;
@@ -24,44 +26,34 @@ public class adminService {
         this.responserepository = responserepository;
     }
 
-    public loginDTO login(String email, String password) {
+    public loginDTO login(String email, String password) throws userNotFound{
 
         var admin = adminRepository.findByEmail(email);
-        if (adminOpt.isPresent()) {
-            var admin = adminOpt.get();
-            if (admin.getPassword().equals(password)) {
-                // success
-                return new loginDTO(admin.getEmail(), admin.getPassword());
-            }
+        if(admin == null || !admin.getPassword().equals(password)){
+            throw new userNotFound("user not fount");
         }
-        // Failed login — return null or throw exception, adjust as needed
-        return null;
+        return new loginDTO(email);
     }
 
-    // Get all enfants from DB
     public List<enfant> getAll() {
         return enfantRepository.findAll();
     }
 
-    // Accept enfant: update child record in DB to accepted state
     public void accepteEnfant(Long parentId, Long enfantId) {
         Optional<enfant> enfantOpt = enfantRepository.findById(enfantId);
-        if (enfantOpt.isPresent()) {
-            enfant enfant = enfantOpt.get();
-            // Update the enfant to accepted - add your field logic here
-            enfant   setAccepted(true);
-            enfantRepository.save(enfant);
-        }
+        reponse res = new reponse();
+        res.setEnfant(enfantId);
+        res.setIsAccepted(true);
+        res.setParent(parentId);
+        this.responserepository.save(res);
     }
 
-    // Refuse enfant: update child record in DB to refused state
     public void refuseEnfant(Long parentId, Long enfantId) {
         Optional<enfant> enfantOpt = enfantRepository.findById(enfantId);
-        if (enfantOpt.isPresent()) {
-            enfant enfant = enfantOpt.get();
-            // Update enfant to refused - add your field logic here
-            enfant.setRefused(true);
-            enfantRepository.save(enfant);
-        }
+        reponse res = new reponse();
+        res.setEnfant(enfantId);
+        res.setIsAccepted(false);
+        res.setParent(parentId);
+        this.responserepository.save(res);
     }
 }
