@@ -61,6 +61,6 @@ public class parentService {
     }
 
     public List<reponse> status(@RequestBody parentDto entiry){
-        return this.responserepository.findByParent(entiry.getId());
+        return this.responserepository.findByparent(entiry.getId());
     }
 }

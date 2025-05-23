@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
-
+@CrossOrigin(origins = "*")  
 @RestController
 @RequestMapping("/parent")
 public class parentController {
@@ -48,7 +48,7 @@ public class parentController {
     }
 
     @GetMapping("/status")
-    public List<reponse> getMethodName(@RequestParam parentDto param) {
+    public List<reponse> getMethodName(@RequestBody parentDto param) {
         return this.parentservice.status(param);
     }
     

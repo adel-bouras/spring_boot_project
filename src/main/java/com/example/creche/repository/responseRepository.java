@@ -7,6 +7,5 @@ import java.util.List;
 
 
 public interface responseRepository extends JpaRepository<reponse,Long>{
-    public List<reponse> findByParent(long parent);
-    
+    public List<reponse> findByparent(Long parent);
 }
