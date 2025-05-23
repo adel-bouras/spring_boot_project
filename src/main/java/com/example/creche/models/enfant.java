@@ -47,4 +47,10 @@ public class enfant {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
+    public String getParentId() {
+        return parentId;
+    }
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
 }

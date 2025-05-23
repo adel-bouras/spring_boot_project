@@ -44,14 +44,9 @@ public class adminController {
         return entity;
     }
     
-        @PostMapping("/refuse")
+    @PostMapping("/refuse")
     public enfantRefused refuseEnfant(@RequestBody enfantRefused entity) {
         this.adminservice.refuseEnfant(entity.getParentid(), entity.getEnfantid());
         return entity;
     }
-    
-    
-
-    
-    
 }

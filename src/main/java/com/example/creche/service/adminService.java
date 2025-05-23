@@ -11,7 +11,6 @@ import com.example.creche.repository.responseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class adminService {
@@ -40,7 +39,6 @@ public class adminService {
     }
 
     public void accepteEnfant(Long parentId, Long enfantId) {
-        Optional<enfant> enfantOpt = enfantRepository.findById(enfantId);
         reponse res = new reponse();
         res.setEnfant(enfantId);
         res.setIsAccepted(true);
@@ -49,7 +47,6 @@ public class adminService {
     }
 
     public void refuseEnfant(Long parentId, Long enfantId) {
-        Optional<enfant> enfantOpt = enfantRepository.findById(enfantId);
         reponse res = new reponse();
         res.setEnfant(enfantId);
         res.setIsAccepted(false);
