@@ -1,6 +1,5 @@
 package com.example.creche.service;
 
-import com.example.creche.dtos.detaille;
 import com.example.creche.dtos.loginDTO;
 import com.example.creche.exceptions.userNotFound;
 import com.example.creche.models.enfant;
@@ -45,19 +44,34 @@ public class adminService {
         return this.enfantRepository.findById(body);
     }
 
-    public void accepteEnfant(Long parentId, Long enfantId) {
-        reponse res = new reponse();
-        res.setEnfant(enfantId);
-        res.setIsAccepted(true);
+public void accepteEnfant(Long parentId, Long enfantId) {
+    Optional<reponse> existingResponse = responserepository.findByParentAndEnfant(parentId, enfantId);
+    
+    reponse res;
+    if (existingResponse.isPresent()) {
+        res = existingResponse.get();
+    } else {
+        res = new reponse();
         res.setParent(parentId);
-        this.responserepository.save(res);
+        res.setEnfant(enfantId);
     }
+    
+    res.setIsAccepted(true);
+    this.responserepository.save(res);
+}
 
-    public void refuseEnfant(Long parentId, Long enfantId) {
-        reponse res = new reponse();
-        res.setEnfant(enfantId);
-        res.setIsAccepted(false);
+public void refuseEnfant(Long parentId, Long enfantId) {
+    Optional<reponse> existingResponse = responserepository.findByParentAndEnfant(parentId, enfantId);
+    reponse res;
+    if (existingResponse.isPresent()) {
+        res = existingResponse.get();
+    } else {
+        res = new reponse();
         res.setParent(parentId);
-        this.responserepository.save(res);
+        res.setEnfant(enfantId);
     }
+    
+    res.setIsAccepted(false);
+    this.responserepository.save(res);
+}
 }

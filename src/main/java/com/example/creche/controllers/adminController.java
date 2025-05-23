@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.creche.dtos.adminDto;
-import com.example.creche.dtos.detaille;
 import com.example.creche.dtos.enfantAccepted;
 import com.example.creche.dtos.enfantRefused;
 import com.example.creche.dtos.loginDTO;
@@ -19,7 +18,6 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @CrossOrigin(origins = "*")  
