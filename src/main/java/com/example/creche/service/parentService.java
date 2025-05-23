@@ -1,10 +1,13 @@
 package com.example.creche.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.creche.dtos.EnfantStatusDto;
 import com.example.creche.dtos.loginDTO;
 import com.example.creche.dtos.parentDto;
 import com.example.creche.exceptions.userNotFound;
@@ -60,7 +63,8 @@ public class parentService {
         return enf;
     }
 
-    public List<reponse> status(@RequestBody parentDto entiry){
-        return this.responserepository.findByParent(entiry.getId());
-    }
+@PostMapping("/status")
+public List<EnfantStatusDto> status(@RequestBody parentDto parent) {
+        return responserepository.findByParent(parent.getId());
+}
 }

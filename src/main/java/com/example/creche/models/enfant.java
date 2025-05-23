@@ -12,7 +12,7 @@ public class enfant {
     private long id;
 
     @Column
-    private String parentId;
+    private long parentId;
 
     @Column(nullable = false)
     private String name;
@@ -47,10 +47,10 @@ public class enfant {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-    public String getParentId() {
+    public long getParentId() {
         return parentId;
     }
-    public void setParentId(String parentId) {
+    public void setParentId(long parentId) {
         this.parentId = parentId;
     }
 }

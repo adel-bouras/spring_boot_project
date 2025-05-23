@@ -3,6 +3,7 @@ package com.example.creche.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.creche.dtos.EnfantStatusDto;
 import com.example.creche.dtos.loginDTO;
 import com.example.creche.dtos.parentDto;
 import com.example.creche.models.enfant;
@@ -48,7 +49,7 @@ public class parentController {
     }
 
     @GetMapping("/status")
-    public List<reponse> getMethodName(@RequestBody parentDto param) {
+    public List<EnfantStatusDto> getMethodName(@RequestBody parentDto param) {
         return this.parentservice.status(param);
     }
     

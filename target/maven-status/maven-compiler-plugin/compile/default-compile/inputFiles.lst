@@ -1,6 +1,7 @@
 /home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/CrecheApplication.java
 /home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/controllers/adminController.java
 /home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/controllers/parentController.java
+/home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/dtos/EnfantStatusDto.java
 /home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/dtos/adminDto.java
 /home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/dtos/detaille.java
 /home/adel/projects/acsi/creche/back/creche/src/main/java/com/example/creche/dtos/enfantAccepted.java
